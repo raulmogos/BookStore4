@@ -1,0 +1,6 @@
+<button (click)="getBooks()" type="button" class="btn btn-primary btn-lg"> GET ALL BOOKS</button>
+<ul *ngIf="books !== null" class="list-group">
+  <li *ngFor="let book of books" class="list-group-item">
+    {{book.title}}, {{book.author}}, {{book.price}}
+  </li>
+</ul>

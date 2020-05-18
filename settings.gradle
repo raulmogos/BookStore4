@@ -1,2 +1,4 @@
 rootProject.name = 'BookStore4'
+include 'bookstore-core'
+include 'bookstore-web'
 
