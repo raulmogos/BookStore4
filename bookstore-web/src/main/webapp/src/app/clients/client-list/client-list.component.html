@@ -1,0 +1,26 @@
+<table *ngIf="clients" class="container table" style="margin-top: 50px">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col"></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clients">
+    <th scope="row">{{ client.id }}</th>
+    <td>{{ client.firstName }}</td>
+    <td>{{ client.lastName }}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+      <button [routerLink]="['/client/', client.id]" type="button" class="btn">Show</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

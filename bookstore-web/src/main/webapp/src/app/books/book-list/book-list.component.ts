@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Book} from "../shared/book.model";
-import {BookService} from "../shared/book.service";
+import {Book} from "../../shared/models/book.model";
+import {BookService} from "../../shared/services/book.service";
 
 
 
@@ -15,12 +15,15 @@ export class BookListComponent implements OnInit {
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
-
+    this.getBooks();
   }
 
   getBooks(): void {
     this.bookService.getBooks().subscribe(
-      books => this.books = books
+      books => {
+        this.books = books
+        this.books.sort((b1, b2) => b1.id - b2.id)
+      }
     )
   }
 }

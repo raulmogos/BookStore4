@@ -10,6 +10,7 @@ import ro.ubb.bookstore.core.repository.ClientRepository;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,27 +24,30 @@ public class ClientMainService implements ClientService {
     @Override
     public Client getClientById(Long id) {
         log.trace("getClientById - method entered: id={}", id);
-        return clientRepository.getOne(id);
+        return clientRepository.findById(id).get();
     }
 
     @Override
-    public void addClient(Client client) {
+    public Client addClient(Client client) {
         log.trace("addClient - method entered: client={}", client);
         //clientValidator.validate(client);
         log.trace("addClient - client validated: client={}", client);
-        clientRepository.save(client);
+        Client c = clientRepository.save(client);
         log.trace("addClient - method finished");
+        return c;
     }
 
     @Override
-    public void removeClient(Long id) {
+    public Client removeClient(Long id) {
         log.trace("removeClient - method entered: id={}", id);
+        Client c = clientRepository.getOne(id);
         clientRepository.deleteById(id);
         log.trace("removeClient - method finished");
+        return c;
     }
 
     @Override
-    public void updateClient(Client newClient) {
+    public Client updateClient(Client newClient) {
         log.trace("updateClient - method entered: newClient={}", newClient);
         //clientValidator.validate(newClient);
         log.trace("updateClient - newClient validated: newClient={}", newClient);
@@ -55,12 +59,18 @@ public class ClientMainService implements ClientService {
             log.debug("updateClient - updated: oldClient={}", oldClient);
         });
         log.trace("updateClient - method finished");
+        return clientRepository.getOne(newClient.getId());
     }
 
     @Override
     public List<Client> getAllClients() {
         log.trace("getAllClients - method entered");
         return clientRepository.findAll();
+    }
+
+    @Override
+    public List<Client> getClients(Set<Long> ids) {
+        return clientRepository.findAllById(ids);
     }
 
     @Override

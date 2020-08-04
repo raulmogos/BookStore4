@@ -1,0 +1,30 @@
+<div *ngIf="client">
+  Books that client {{ client.id }} can buy:
+  <br/>
+  <table *ngIf="booksToBuy" class="container table" style="margin-top: 50px">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Price</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let book of booksToBuy">
+      <th scope="row">{{ book.id }}</th>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.price }}</td>
+      <td></td>
+      <td></td>
+      <td>
+        <button (click)="buyThisBook(book)" type="button" class="btn">Buy</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

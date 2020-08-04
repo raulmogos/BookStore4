@@ -2,15 +2,18 @@ package ro.ubb.bookstore.web.dto;
 
 import lombok.*;
 
+import java.util.Set;
+
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
+@Getter
+@Setter
+@Builder
 public class ClientDto extends BaseDto {
     private String firstName;
     private String lastName;
     private double moneySpent;
+    private Set<Long> booksIds;
 
     @Override
     public String toString() {
@@ -18,6 +21,6 @@ public class ClientDto extends BaseDto {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", moneySpent=" + moneySpent +
-                '}' + super.toString();
+                '}';
     }
 }

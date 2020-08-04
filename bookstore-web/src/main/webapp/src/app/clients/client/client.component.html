@@ -1,0 +1,36 @@
+<div *ngIf="client">
+  <div class="row" style="margin-top: 100px">
+    <div style="width: 50%" class="col">
+      <ul class="list-group" style="margin-top: 15px">
+        <li class="list-group-item">id: {{client.id}}</li>
+        <li class="list-group-item">first name: {{client.firstName}}</li>
+        <li class="list-group-item">author: {{client.lastName}}</li>
+        <li class="list-group-item">money spent: {{client.moneySpent}}</li>
+      </ul>
+    </div>
+    <form class="col" (submit)="updateOnSubmit()">
+      <div class="form-group">
+        <label>new first name</label>
+        <input type="text" class="form-control" value="{{client.firstName}}" (input)="firstNameOnchange($event)">
+      </div>
+      <div class="form-group">
+        <label>new last name</label>
+        <input type="text" class="form-control" value="{{client.lastName}}" (input)="lastNameOnchange($event)">
+      </div>
+      <div class="form-group">
+        <label>new money spent</label>
+        <input type="text" class="form-control" value="{{client.moneySpent}}" (input)="moneySpentOnchange($event)">
+      </div>
+      <button type="button" class="btn btn-success float-left" [routerLink]="['/client/buy-book/', client.id]">buy a new book</button>
+      <button type="submit" class="btn btn-success float-right">save edit</button>
+      <button type="button" (click)="deleteClient()" class="btn btn-danger float-right">Delete Book</button>
+    </form>
+  </div>
+  <div style="margin-top: 30px" *ngIf="books">
+    Books bought
+    <ul class="list-group" *ngFor="let book of books">
+      <li class="list-group-item">id: {{book.id}} - title: {{book.title}} - author: {{book.author}} - price: {{book.price}}</li>
+    </ul>
+  </div>
+  <div style="margin-top: 50px" *ngIf="books === undefined">Nobody bought this book.</div>
+</div>

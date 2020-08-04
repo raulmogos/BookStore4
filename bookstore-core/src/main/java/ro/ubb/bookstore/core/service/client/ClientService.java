@@ -3,6 +3,7 @@ package ro.ubb.bookstore.core.service.client;
 import ro.ubb.bookstore.core.model.Client;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ClientService {
 
@@ -10,13 +11,15 @@ public interface ClientService {
 
     Client getClientById(Long id);
 
-    void addClient(Client client);
+    Client addClient(Client client);
 
-    void removeClient(Long id);
+    Client removeClient(Long id);
 
-    void updateClient(Client client);
+    Client updateClient(Client client);
 
     List<Client> getAllClients();
+
+    List<Client> getClients(Set<Long> ids);
 
     List<Client> filterClientsByName(String name);
 

@@ -1,0 +1,37 @@
+l<div *ngIf="book">
+  <div class="row" style="margin-top: 100px">
+    <div style="width: 50%" class="col">
+      <ul class="list-group" style="margin-top: 15px">
+        <li class="list-group-item">id: {{book.id}}</li>
+        <li class="list-group-item">author: {{book.title}}</li>
+        <li class="list-group-item">author: {{book.author}}</li>
+        <li class="list-group-item">price: {{book.price}}</li>
+        <li class="list-group-item">clients: [{{book.clientsIds}}]</li>
+      </ul>
+    </div>
+    <form class="col" (submit)="updateOnSubmit()">
+      <div class="form-group">
+        <label>new title</label>
+        <input type="text" class="form-control" value="{{book.title}}" (input)="titleOnchange($event)">
+      </div>
+      <div class="form-group">
+        <label>new author</label>
+        <input type="text" class="form-control" value="{{book.author}}" (input)="authorOnchange($event)">
+      </div>
+      <div class="form-group">
+        <label>new price</label>
+        <input type="text" class="form-control" value="{{book.price}}" (input)="priceOnchange($event)">
+      </div>
+      <button type="submit" class="btn btn-success float-right">Save Edit</button>
+      <button type="button" (click)="deleteBook()" class="btn btn-danger float-right">Delete Book</button>
+    </form>
+  </div>
+
+  <div style="margin-top: 30px" *ngIf="clients">
+    Clients that bought this book
+    <ul class="list-group" *ngFor="let client of clients">
+      <li class="list-group-item">{{client.firstName}} - {{client.lastName}}</li>
+    </ul>
+  </div>
+  <div style="margin-top: 50px" *ngIf="clients === undefined">Nobody bought this book.</div>
+</div>

@@ -1,4 +1,13 @@
-<div>
-  <h1> BookStore 4</h1>
-  <app-books></app-books>
+<div class="container">
+<!--  <h1 class="header">BookStore</h1>-->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <img  routerLink="/" routerLinkActive="active" style="cursor: pointer; outline:none;" src="https://cdn2.iconfinder.com/data/icons/education-378/96/Book-512.png" width="35" height="35" class="d-inline-block align-top" alt="">
+      <span routerLink="/" routerLinkActive="active" style="cursor: pointer; outline:none; margin-left: 13px">BookStore</span>
+    </div>
+    <button routerLink="/books" routerLinkActive="active" type="button" class="btn nav-item float-left">Books</button>
+    <button routerLink="/purchases" routerLinkActive="active" type="button" class="btn nav-item float-left">Purchases</button>
+    <button routerLink="/clients" routerLinkActive="active" type="button" class="btn nav-item float-left">Clients</button>
+  </nav>
+  <router-outlet></router-outlet>
 </div>

@@ -4,6 +4,7 @@ package ro.ubb.bookstore.core.service.book;
 import ro.ubb.bookstore.core.model.Book;
 
 import java.util.List;
+import java.util.Set;
 
 public interface BookService {
 
@@ -11,13 +12,15 @@ public interface BookService {
 
     Book getBookById(Long id);
 
-    void addBook(Book book);
+    Book addBook(Book book);
 
-    void removeBook(Long id);
+    Book removeBook(Long id);
 
-    void updateBook(Book book);
+    Book updateBook(Book book);
 
     List<Book> getAllBooks();
+
+    List<Book> getBooks(Set<Long> ids);
 
     List<Book> filterBookAuthor(String author);
 

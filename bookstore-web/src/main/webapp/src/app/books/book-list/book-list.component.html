@@ -1,6 +1,26 @@
-<button (click)="getBooks()" type="button" class="btn btn-primary btn-lg"> GET ALL BOOKS</button>
-<ul *ngIf="books !== null" class="list-group">
-  <li *ngFor="let book of books" class="list-group-item">
-    {{book.title}}, {{book.author}}, {{book.price}}
-  </li>
-</ul>
+<table *ngIf="books" class="container table" style="margin-top: 50px">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">Title</th>
+    <th scope="col">Author</th>
+    <th scope="col">Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of books">
+    <th scope="row">{{ book.id }}</th>
+    <td>{{ book.title }}</td>
+    <td>{{ book.author }}</td>
+    <td>{{ book.price }}</td>
+    <td></td>
+    <td></td>
+    <td>
+      <button [routerLink]="['/book/', book.id]" type="button" class="btn">Show</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -3,27 +3,22 @@ package ro.ubb.bookstore.web.converter;
 import ro.ubb.bookstore.core.model.BaseEntity;
 import ro.ubb.bookstore.web.dto.BaseDto;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public abstract class BaseConverter<Model extends BaseEntity<Long>, Dto extends BaseDto> implements Converter<Model, Dto> {
+public abstract class AbstractConverterBaseEntity<Model extends BaseEntity<Long>, Dto extends BaseDto>
+        extends AbstractConverter<Model, Dto> implements ConverterBaseEntity<Model, Dto>
+{
 
     public Set<Long> convertModelsToIDs(Set<Model> models) {
         return models.stream()
-                .map(model -> model.getId())
+                .map(BaseEntity::getId)
                 .collect(Collectors.toSet());
     }
 
     public Set<Long> convertDTOsToIDs(Set<Dto> dtos) {
         return dtos.stream()
-                .map(dto -> dto.getId())
-                .collect(Collectors.toSet());
-    }
-
-    public Set<Dto> convertModelsToDtos(Collection<Model> models) {
-        return models.stream()
-                .map(model -> convertModelToDto(model))
+                .map(BaseDto::getId)
                 .collect(Collectors.toSet());
     }
 
